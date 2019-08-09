@@ -1,0 +1,48 @@
+; These two instructions will produce statically and dynamically linkable
+; object files "gromit.o" and "gromit.so" respectively.
+(compile -s -O2 -d1 gromit-consistency.scm -j gromit-consistency)
+(compile -s gromit-consistency.import.scm -O2 -d0)
+(compile -c -O2 -d1 gromit-consistency.scm -unit gromit-consistency -j gromit-consistency)
+
+(compile -s -O2 -d1 gromit-lolevel.scm -j gromit-lolevel)
+(compile -s gromit-lolevel.import.scm -O2 -d0)
+(compile -c -O2 -d1 gromit-lolevel.scm -unit gromit-lolevel -j gromit-lolevel)
+
+(compile -s -O2 -d1 gromit-types.scm -j gromit-types)
+(compile -s gromit-types.import.scm -O2 -d0)
+(compile -c -O2 -d1 gromit-types.scm -unit gromit-types -j gromit-types)
+
+(compile -s -O2 -d1 gromit-records.scm -j gromit-records)
+(compile -s gromit-records.import.scm -O2 -d0)
+(compile -c -O2 -d1 gromit-records.scm -unit gromit-records -j gromit-records)
+
+(compile -s -O2 -d1 gromit-sqlite.scm -j gromit-sqlite)
+(compile -s gromit-sqlite.import.scm -O2 -d0)
+(compile -c -O2 -d1 gromit-sqlite.scm -unit gromit-sqlite -j gromit-sqlite)
+
+(compile -s -O2 -d1 gromit.scm -j gromit)
+(compile -s gromit.import.scm -O2 -d0)
+(compile -c -O2 -d1 gromit.scm -unit gromit -j gromit)
+
+; :s/-O2 -d1/-d2/
+
+(install-extension
+  ; Name of your extension:
+  'gromit
+  ; Files to install for your extension:
+  '("gromit-consistency.o" "gromit-consistency.so" "gromit-consistency.import.so"
+    "gromit-lolevel.o" "gromit-lolevel.so" "gromit-lolevel.import.so"
+    "gromit-types.o" "gromit-types.so" "gromit-types.import.so"
+    "gromit-records.o" "gromit-records.so" "gromit-records.import.so"
+    "gromit-sqlite.o" "gromit-sqlite.so" "gromit-sqlite.import.so"
+    "gromit.o" "gromit.so" "gromit.import.so")
+  ; Assoc list with properties for your extension:
+  '((version "0.1") ;; version number should be a string
+    (static ;; for static linking
+     "gromit-consistency.o"
+     "gromit-lolevel.o"
+     "gromit-types.o"
+     "gromit-records.o"
+     "gromit-sqlite.o"
+     "gromit.o")))
+

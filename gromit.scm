@@ -194,9 +194,10 @@
     value))
 
 
-(define object-metadata-description
-  (compose %metadata-description
-	   object-metadata))
+(define (object-metadata-description object #!optional (value no-value))
+  (%metadata-description
+    (object-metadata object)
+    value))
 
 
 (define object-metadata-version

@@ -87,6 +87,10 @@
 	 current-gromit-db
 	 open-gromit-database
 	 current-gromit-user
+	 with-gromit-read-transaction
+	 with-gromit-write-transaction
+	 with-gromit-nested-transaction
+	 with-gromit-nested-write-transaction
 	 )
 
 (import chicken scheme)

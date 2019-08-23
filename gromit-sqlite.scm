@@ -1253,7 +1253,7 @@
 	 (let* ((NAME             (car SIGNATURE))
 		(ARGUMENTS-syntax (cdr SIGNATURE))
 		(ARGUMENT-NAMES   (map car ARGUMENTS-syntax))
-		(ARGUMENT-NAMES   (inject ARGUMENT-NAMES))
+		(ARGUMENT-NAMES   (strip-syntax ARGUMENT-NAMES))
 		(TYPE*            (strip-syntax TYPE))
 		(read-TYPE        (symbol-append 'read- TYPE*))
 		(CONDITIONS       (strip-syntax CONDITIONS))
